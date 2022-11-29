@@ -5,6 +5,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<div style = "border:3px solid #000 ;width:140px">
+	<form action = "/addMaterielGoodsInfo" method="post">
+	
+	<input id = "comment"  name = "comment" placeholder = "请输入comment" style= "width:120px" >
+	<input id = "description"  name = "description"   placeholder = "请输入description"style= "width:120px;" >
+	<input id = "designator" name = "designator"  placeholder = "请输入designator" style= "width:120px" >
+	<input id = "footprint" name = "footprint"  placeholder = "请输入footprint" style= "width:120px" >
+	<input id = "quantity" name = "quantity"  placeholder = "请输入quantity" style = "width:120px;">
+	<input type = "submit" name = "addmaterielgoodsinfo" value = "添加新物资库存信息">
+	</form>
+	</div>
+
+
 <h3>所有库存查询</h3>
 <div>
 	<table border="1" style= "width:800px;table-layout:fixed">
@@ -35,6 +49,9 @@
 	</form>
 	</tr>
 	 -->	
+	 
+	 
+	 
 	
 	<form action="/UpdateMaterielGoodsNum" th:each="mgilist,mgilistStat:${mgilist}" th:id ="${mgilistStat.index}+1" method="post" >
 		<table border="1" th:name="'name'+${mgilistStat.index}+1"  style= "width:900px;table-layout:fixed;">
@@ -56,5 +73,11 @@
 	</form>
 
 </div>
+
+
+
+
+
+
 </body>
 </html>

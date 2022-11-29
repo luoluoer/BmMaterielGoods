@@ -6,12 +6,13 @@
 </head>
 <body>
 <div>
-	<table border="1" style= "width:800px;table-layout:fixed">
+	<table border="1" style= "width:800px;table-layout:fixed" method = "post">
 	<tr style="width:800px;text-align: center;">
 	<td style = "width:100px;">板子编号</td>
 	<td style = "width:100px;">板子名称</td>
 	<td style = "width:100px;">板子数量</td>
 	<td style = "width:100px;">Action</td>
+	<td style = "width:100px;">Action2</td>
 	</tr>
 	</table>
 	<!-- 
@@ -30,15 +31,17 @@
 	</tr>
 	 -->	
 	
-	<form action="/PcbBomInfoDetail" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
+	<form action="/PcbBomInfoDetailDeal" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
 		<table border="1" th:name="'name'+${bomlistStat.index}+1"  style= "width:800px;table-layout:fixed;">
 
 			<tr style="width:800px;text-align: center;">
-				<td style = "width:100px"> <input name = "bomid" th:value="${bomlist.bomid}" style= "width:180px" >  </td>
-				<td style = "width:100px"> <input name = "bomname" th:value="${bomlist.bomname}" style= "width:180px" > </td>
-				<td style = "width:100px"> <input name = "quantity" th:value="${bomlist.quantity}" readonly="true" style= "width:180px;" > </td>
+				<td style = "width:100px"> <input name = "bomid" th:value="${bomlist.bomid}" style= "width:150px" >  </td>
+				<td style = "width:100px"> <input name = "bomname" th:value="${bomlist.bomname}" style= "width:150px" > </td>
+				<td style = "width:100px"> <input name = "quantity" th:value="${bomlist.quantity}" readonly="true" style= "width:150px;" > </td>
 				
-				<td style = "width:100px"><input name = "submit" type="submit" value = "查询所需元器件" style = "width:190px;"></td>
+				<td style = "width:100px"><input name = "submit" type="submit" value = "查询元器件" style = "width:150px;"></td>
+				<td style = "width:100px"><input name = "submit" type="submit" value = "删除主板信息" style = "width:150px;"></td>
+				
 			</tr>
 		</table>
 		

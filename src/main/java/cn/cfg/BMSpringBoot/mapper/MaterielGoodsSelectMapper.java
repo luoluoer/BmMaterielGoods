@@ -24,7 +24,7 @@ public interface MaterielGoodsSelectMapper {
 	//新增库存信息
 	@Insert("insert into MaterielGoodsInfo (comment,description,designator,footprint,quantity) values(#{comment},#{description},#{designator},#{footprint},#{quantity})")
 	void addMaterielGoodsInfo(String comment, String description,String designator,String footprint,int quantity);
-	//修改指定的库存数量
+	//修改指定库存数量
 	@Update("update MaterielGoodsInfo set quantity = #{updatenum} where id = #{id}")
 	void UpdateMaterielGoodsNum(int id,int updatenum);
 	//删除当前库存信息
@@ -38,6 +38,9 @@ public interface MaterielGoodsSelectMapper {
 	//查询单个板子信息
 	@Select("select * from pcbbominfo where bomid = #{bomid}")
 	List<PcbBomInfo> selectsinglebominfo(int bomid);
+	
+	@Delete("delete from pcbbominfo where bomid = #{bomid}")
+	void deletesinglebominfo(int bomid);
 	
 	//查看单个板子的清单
 	@Select("select * from pcbbominfodetail a left join pcbbominfo b on a.bomid = b.bomid left join materielgoodsinfo c on c.id = a.skuid where b.bomid = #{bomid}")

@@ -19,11 +19,12 @@ import cn.cfg.BMSpringBoot.model.PcbBomInfo;
 * @version 创建时间：2022年11月26日 上午12:17:01
 */
 @Controller
-public class MaterielBomInfoDetailController {
+public class PcbBomInfoDetailDealController {
 	@Autowired
 	MaterielGoodsSelectMapper mp;
-	@RequestMapping("/PcbBomInfoDetail")
+	@RequestMapping("/PcbBomInfoDetailDeal")
 	public String MaterielBomInfoDetail(HttpServletRequest req,Model model) {
+		String retrun_String = null;
 		int bomid = Integer.valueOf(req.getParameter("bomid"));
 		List<PcbBomInfo> singlebominfo = mp.selectsinglebominfo(bomid);
 		System.out.println(singlebominfo);
@@ -35,6 +36,19 @@ public class MaterielBomInfoDetailController {
 		System.out.println(bominfodetail);
 		System.out.println("执行4");
 		model.addAttribute("bominfodetail",bominfodetail);
-		return "MaterielBomInfoDetailController";
+		if (req.getParameter("submit").equals("查询元器件")) {
+			retrun_String = "PcbBomInfoDetailController"; 
+		}else if (req.getParameter("submit").equals("删除主板信息")) {
+			mp.deletesinglebominfo(bomid);
+			List<PcbBomInfo> bomlist= mp.findbominfo();
+			System.out.println("this is my PcbBomInfo_bomlist "+bomlist);
+			model.addAttribute("bomlist",bomlist);
+			
+			retrun_String = "MaterielBomSelectController"; 
+		}
+		
+		return retrun_String;
+		
+		
 	}
 }
