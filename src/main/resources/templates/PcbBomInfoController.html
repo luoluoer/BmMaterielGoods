@@ -6,6 +6,22 @@
 </head>
 <body>
 <div>
+	<form action="/addPcbBomInfo"></form> 
+</div>
+
+
+
+	<div style = "border:3px solid #000 ;width:140px">
+	<form action = "/addPcbBomInfo" method="post">
+	
+	<input id = "bomid"  name = "bomid" placeholder = "请输入板子编号" style= "width:120px" >
+	<input id = "bomname"  name = "bomname"   placeholder = "请输入板子名称"style= "width:120px;" >
+	<input id = "bomquantity"  name = "bomquantity"   placeholder = "请输入板子数量/数字"style= "width:120px;" >
+	<input type = "submit" name = "addmaterielgoodsinfo" value = "添加电路板信息">
+	</form>
+	</div>
+
+<div>
 	<table border="1" style= "width:800px;table-layout:fixed" method = "post">
 	<tr style="width:800px;text-align: center;">
 	<td style = "width:100px;">板子编号</td>
@@ -31,7 +47,7 @@
 	</tr>
 	 -->	
 	
-	<form action="/PcbBomInfoDetailDeal" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
+	<form action="/PcbBomInfoDetail" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
 		<table border="1" th:name="'name'+${bomlistStat.index}+1"  style= "width:800px;table-layout:fixed;">
 
 			<tr style="width:800px;text-align: center;">

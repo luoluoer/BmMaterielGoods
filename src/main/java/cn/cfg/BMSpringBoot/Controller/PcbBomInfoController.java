@@ -19,15 +19,15 @@ import cn.cfg.BMSpringBoot.model.PcbBomInfo;
 * @version 创建时间：2022年11月23日 下午9:15:11
 */
 @Controller
-public class MaterielBomSelectController {
+public class PcbBomInfoController {
 	@Autowired
 	MaterielGoodsSelectMapper mp;
-	@RequestMapping("/MaterielBomSelect")
+	@RequestMapping("/PcbBomInfo")
 	public String MaterielBomSelect(Model model){
 		List<PcbBomInfo> bomlist= mp.findbominfo();
 		System.out.println("this is my bomlist "+bomlist);
 		model.addAttribute("bomlist",bomlist);
-		return "MaterielBomSelectController";
+		return "PcbBomInfoController";
 	}
 	
 }

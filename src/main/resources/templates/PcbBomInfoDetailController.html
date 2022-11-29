@@ -6,10 +6,20 @@
 </head>
 <body>
 <h3 th:each="singlebominfo,singlebominfoStat:${singlebominfo}" th:text="${singlebominfo.bomname}+'所需要元器件及数量'"></h3>
+
+<div>
+	<form action="/addPcbBomInfoDetail" th:each="s,sStat:${singlebominfobak}"  method = "post"   > 
+	<input name = "addbomid" th:value="${s.bomid}" style = "display:none" >
+	<input name = "addskuid" placeholder = "请输入skuid">
+	<input name = "addnum" placeholder = "请输入需要的数量">
+	<input type = "submit" value = "添加板子元器件">
+	</form>
+</div>
+
 <div>
 	<table border="1" style= "width:800px;table-layout:fixed">
 	<tr style="width:800px;text-align: center;">
-	<td style = "width:100px;">id</td>
+	<td style = "width:100px;">skuid</td>
 	<td style = "width:100px;">comment</td>
 	<td style = "width:100px;">Description</td>
 	<td style = "width:100px;">Designator</td>
@@ -35,18 +45,19 @@
 	</tr>
 	 -->	
 	
-	<form action="/UpdateBomDetailNum" th:each="bominfodetail,bominfodetailStat:${bominfodetail}" th:id ="${bominfodetailStat.index}+1" method="post" >
+	<form action="/BomInfoDetailDeal" th:each="bominfodetail,bominfodetailStat:${bominfodetail}" th:id ="${bominfodetailStat.index}+1" method="post" >
 		<table border="1" th:name="'name'+${bominfodetailStat.index}+1"  style= "width:800px;table-layout:fixed;">
 
 			<tr style="width:800px;text-align: center;">
-				<td style = "width:100px"> <input name = "id" th:value="${bominfodetail.id}" style= "width:90px" >  </td>
+				<td style = "width:100px"> <input name = "skuid" th:value="${bominfodetail.skuid}" style= "width:90px" >  </td>
 				<td style = "width:100px"> <input name = "comment" th:value="${bominfodetail.comment}" style= "width:90px" > </td>
 				<td style = "width:100px"> <input name = "description" th:value="${bominfodetail.description}" readonly="true" style= "width:90px;" > </td>
 				<td style = "width:100px"> <input name = "designator" th:value="${bominfodetail.designator}" readonly="true" style= "width:90px" > </td>
 				<td style = "width:100px"> <input name = "footprint" th:value="${bominfodetail.footprint}" readonly="true" style= "width:90px" ></td>
-				<td style = "width:100px"><input type = "text" name = "updatebomdetailnum" style= "width:90px" ;></td>
+				<td style = "width:100px"><input type = "text" name = "updatenum" style= "width:90px" ;></td>
 				<td style = "width:100px"><input name = "quantity" th:value="${bominfodetail.quantity}" readonly="true" style = "width:90px;"></td>
-				<td style = "width:100px"><input name = "submit" type="submit" style = "width:100px;"></td>
+				<td style = "width:100px"><input name = "submit" type="submit" value = "修改数量" style = "width:100px;"></td>
+				<td hidden="hidden" style = "width:100px ;"> <input name = "bomid" th:value="${bominfodetail.bomid}" style= "width:90px;display:none; border:0 " > </td>
 			</tr>
 		</table>
 		
