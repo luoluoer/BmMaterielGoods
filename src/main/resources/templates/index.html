@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang = "en">
+<head>
+<meta charset="UTF-8">
+<title>物料管理首页</title>
+</head>
+<body>
+	<h2>欢迎使用柴方贵的坑人小技巧</h2>
+	<h3 th:text="谁都不知道哪天就不能用了"></h3>
+	<h4>请问您需要干嘛呢</h4>
+	<div>
+	<form action = "/addMaterielGoodsInfo" method="post">
+	<!-- input id = "id" name = "id" placeholder = "请输入id" style= "width:120px"  -->
+	<input id = "comment"  name = "comment" placeholder = "请输入comment" style= "width:120px" >
+	<input id = "description"  name = "description"   placeholder = "请输入description"style= "width:120px;" >
+	<input id = "designator" name = "designator"  placeholder = "请输入designator" style= "width:120px" >
+	<input id = "footprint" name = "footprint"  placeholder = "请输入footprint" style= "width:120px" >
+	<input id = "quantity" name = "quantity"  placeholder = "请输入quantity" style = "width:120px;">
+	<input type = "submit" name = "addmaterielgoodsinfo" value = "添加新物资库存信息">
+	</form>
+	</div>
+	
+	
+	<div>
+	</form>
+	<form action="MaterielBomSelect"><input type="submit" name = "materielbomselect" value="查询所有电路板信息"></form>
+	<form action="/MaterielGoodsSelect"><input type="submit" name = "selectallquantity" value="查询所有库存"></form>
+	<form action="/selectrequirequantity"><input type="submit" name = "selectrequirequantity" value="查询不同主板所需物料"></form>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang = "en">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>所有库存查询</h3>
+<div>
+	<table border="1" style= "width:800px;table-layout:fixed">
+	<tr style="width:800px;text-align: center;">
+	<td style = "width:100px;">id</td>
+	<td style = "width:100px;">comment</td>
+	<td style = "width:100px;">Description</td>
+	<td style = "width:100px;">Designator</td>
+	<td style = "width:100px;">Footprint</td>
+	<td style = "width:100px;">updatenum</td>
+	<td style = "width:100px;">Quantity</td>
+	<td style = "width:100px;">Action</td>
+	<td style = "width:100px;">Action2</td>
+	</tr>
+	</table>
+	<!-- 
+	tr th:each="mgilist,mgilistStat:${mgilist}">	
+	<form th:id = "${mgilistStat.index}"action = "/UpdateMaterielGoodsNum">
+	<td th:text="${mgilist.id}"></td>
+	<td th:text="${mgilist.comment}"></td>
+	<td th:text="${mgilist.description}"></td>
+	<td th:text="${mgilist.designator}"></td>
+	<td th:text="${mgilist.footprint}"></td>
+	<td><input type = "text" value = ""></td>
+	<td th:text="${mgilist.quantity}"></td>
+	
+	<td><input type = "submit" value = "提交"></td>
+	</form>
+	</tr>
+	 -->	
+	
+	<form action="/UpdateMaterielGoodsNum" th:each="mgilist,mgilistStat:${mgilist}" th:id ="${mgilistStat.index}+1" method="post" >
+		<table border="1" th:name="'name'+${mgilistStat.index}+1"  style= "width:900px;table-layout:fixed;">
+
+			<tr style="width:800px;text-align: center;">
+				<td style = "width:100px"> <input name = "id" th:value="${mgilist.id}" style= "width:90px" >  </td>
+				<td style = "width:100px"> <input name = "comment" th:value="${mgilist.comment}" style= "width:90px" > </td>
+				<td style = "width:100px"> <input name = "description" th:value="${mgilist.description}" readonly="true" style= "width:90px;" > </td>
+				<td style = "width:100px"> <input name = "designator" th:value="${mgilist.designator}" readonly="true" style= "width:90px" > </td>
+				<td style = "width:100px"> <input name = "footprint" th:value="${mgilist.footprint}" readonly="true" style= "width:90px" ></td>
+				<td style = "width:100px"><input type = "text" name = "updatenum" style= "width:90px" ;></td>
+				<td style = "width:100px"><input name = "quantity" th:value="${mgilist.quantity}" readonly="true" style = "width:90px;"></td>
+				<td style = "width:100px"><input name = "submit" type="submit"  value = "修改当前库存" style = "width:100px;"></td>
+				<td style = "width:100px"><input name = "submit" type="submit"  value = "删除当前记录" style = "width:100px;"></td>
+				
+			</tr>
+		</table>
+		
+	</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang = "en">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	<table border="1" style= "width:800px;table-layout:fixed">
+	<tr style="width:800px;text-align: center;">
+	<td style = "width:100px;">板子编号</td>
+	<td style = "width:100px;">板子名称</td>
+	<td style = "width:100px;">板子数量</td>
+	<td style = "width:100px;">Action</td>
+	</tr>
+	</table>
+	<!-- 
+	tr th:each="mgilist,mgilistStat:${mgilist}">	
+	<form th:id = "${mgilistStat.index}"action = "/UpdateMaterielGoodsNum">
+	<td th:text="${mgilist.id}"></td>
+	<td th:text="${mgilist.comment}"></td>
+	<td th:text="${mgilist.description}"></td>
+	<td th:text="${mgilist.designator}"></td>
+	<td th:text="${mgilist.footprint}"></td>
+	<td><input type = "text" value = ""></td>
+	<td th:text="${mgilist.quantity}"></td>
+	
+	<td><input type = "submit" value = "提交"></td>
+	</form>
+	</tr>
+	 -->	
+	
+	<form action="/PcbBomInfoDetail" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
+		<table border="1" th:name="'name'+${bomlistStat.index}+1"  style= "width:800px;table-layout:fixed;">
+
+			<tr style="width:800px;text-align: center;">
+				<td style = "width:100px"> <input name = "bomid" th:value="${bomlist.bomid}" style= "width:180px" >  </td>
+				<td style = "width:100px"> <input name = "bomname" th:value="${bomlist.bomname}" style= "width:180px" > </td>
+				<td style = "width:100px"> <input name = "quantity" th:value="${bomlist.quantity}" readonly="true" style= "width:180px;" > </td>
+				
+				<td style = "width:100px"><input name = "submit" type="submit" value = "查询所需元器件" style = "width:190px;"></td>
+			</tr>
+		</table>
+		
+	</form>
+
+</div>
+</body>
+</html>
