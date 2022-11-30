@@ -24,11 +24,12 @@
 <div>
 	<table border="1" style= "width:800px;table-layout:fixed" method = "post">
 	<tr style="width:800px;text-align: center;">
-	<td style = "width:100px;">板子编号</td>
-	<td style = "width:100px;">板子名称</td>
-	<td style = "width:100px;">板子数量</td>
-	<td style = "width:100px;">Action</td>
-	<td style = "width:100px;">Action2</td>
+	<td style = "width:130px;">板子编号</td>
+	<td style = "width:130px;">板子名称</td>
+	<td style = "width:130px;">板子数量</td>
+	<td style = "width:130px;">Action</td>
+	<td style = "width:130px;">Action2</td>
+	<td style = "width:210px;">添加新完成主板数量</td>
 	</tr>
 	</table>
 	<!-- 
@@ -47,17 +48,21 @@
 	</tr>
 	 -->	
 	
-	<form action="/PcbBomInfoDetail" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
-		<table border="1" th:name="'name'+${bomlistStat.index}+1"  style= "width:800px;table-layout:fixed;">
+	<form action="/PcbBomInfoDeal" th:each="bomlist,bomlistStat:${bomlist}" th:id ="${bomlistStat.index}+1" method="post" >
+		<table border="1" th:name="'name'+${bomlistStat.index}+1"  style= "width:900px;table-layout:fixed;">
 
 			<tr style="width:800px;text-align: center;">
-				<td style = "width:100px"> <input name = "bomid" th:value="${bomlist.bomid}" style= "width:150px" >  </td>
-				<td style = "width:100px"> <input name = "bomname" th:value="${bomlist.bomname}" style= "width:150px" > </td>
-				<td style = "width:100px"> <input name = "quantity" th:value="${bomlist.quantity}" readonly="true" style= "width:150px;" > </td>
+				<td style = "width:130px"> <input name = "bomid" th:value="${bomlist.bomid}" style= "width:100px" >  </td>
+				<td style = "width:130px"> <input name = "bomname" th:value="${bomlist.bomname}" style= "width:100px" > </td>
+				<td style = "width:130px"> <input name = "quantity" th:value="${bomlist.quantity}" readonly="true" style= "width:100px;" > </td>
 				
-				<td style = "width:100px"><input name = "submit" type="submit" value = "查询元器件" style = "width:150px;"></td>
-				<td style = "width:100px"><input name = "submit" type="submit" value = "删除主板信息" style = "width:150px;"></td>
-				
+				<td style = "width:130px"><input name = "submit" type="submit" value = "查询元器件" style = "width:100px;"></td>
+				<td style = "width:130px;height:50px;"><input name = "submit" type="submit" value = "删除主板信息" style = "width:100px;"></td>
+				<td>
+					<input name = "updatepcbbomnum" placeholder = "请输入板子完成数量"  style = "width:150px;display:block;">
+					<input name = "submit" type = "submit"  value = "添加板子数量" style = "width:150px;display:block;">
+				</td>
+			
 			</tr>
 		</table>
 		

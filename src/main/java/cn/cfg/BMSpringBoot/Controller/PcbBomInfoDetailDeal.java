@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.cfg.BMSpringBoot.mapper.MaterielGoodsSelectMapper;
 import cn.cfg.BMSpringBoot.model.MaterielGoodsInfo;
 import cn.cfg.BMSpringBoot.model.PcbBomInfo;
+import cn.cfg.BMSpringBoot.model.PcbBominfodetail;
 @Controller
 public class PcbBomInfoDetailDeal {
 	@Autowired
@@ -29,9 +30,17 @@ public class PcbBomInfoDetailDeal {
 		List<MaterielGoodsInfo> singlegoodsinfo =  mp.singlegoodsinfo(skuid_int);
 		System.out.println(singlegoodsinfo);
 		if(singlegoodsinfo.size() == 0 ) {
-			System.out.println("走到这里是不对的");
+			//输入的物资编码不存在时，不进行处理
+			System.out.println("没有这个物资");
 		}else if(singlegoodsinfo.size()!=0) {
-			mp.addbominfodetail(bomid_int, skuid_int, quantity_int);
+			//输入的物资编码存在的时候，再进行处理，处理方式，如果pcbbominfodetail表中没有，进行添加，如果有，不进行处理
+			List<PcbBominfodetail> pcbbominfolist = mp.isExistpcbbominfodetail(skuid_int, bomid_int);
+			if (pcbbominfolist.size() == 0) {
+				mp.addbominfodetail(bomid_int, skuid_int, quantity_int);
+				
+			}else  {
+				
+			}
 		}
 		List<PcbBomInfo> singlebominfo = mp.selectsinglebominfo(bomid_int);
 		model.addAttribute("singlebominfo",singlebominfo);
