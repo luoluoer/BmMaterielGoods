@@ -59,7 +59,7 @@ public interface MaterielGoodsSelectMapper {
 	
 	
 	//查看单个板子的清单
-	@Select("select * from pcbbominfodetail a left join pcbbominfo b on a.bomid = b.bomid left join materielgoodsinfo c on c.id = a.skuid where b.bomid = #{bomid}")
+	@Select("select * from pcbbominfodetail a inner join pcbbominfo b on a.bomid = b.bomid inner join materielgoodsinfo c on c.id = a.skuid where b.bomid = #{bomid}")
 	List<BomInfoDetail> selectbominfobybomid(int bomid);
 	
 	//删除单个板子的清单明细
